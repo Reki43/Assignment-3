@@ -111,7 +111,8 @@ Type the following commmand to set ownership of the home directory and its conte
 sudo chown -R webgen:webgen /var/lib/webgen
 ```
 
-[!NOTE] Running this command changes the ownership to the webgen user, ensuring that only the webgen user has the necessary permissions to access and manage its home directory and all files within it.
+>[!NOTE] 
+>Running this command changes the ownership to the webgen user, ensuring that only the webgen user has the necessary permissions to access and manage its home directory and all files within it.
 
 
 
