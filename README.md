@@ -214,7 +214,7 @@ sudo journalctl -u generate-index.service
 
 **1. Modify the Main `nginx.conf` File**
 
-Type the following command to access and edit the `nginx.conf` file:
+Type the following command to access and edit the `nginx.conf` file[^3]:
 ```
 sudo nvim /etc/nginx/nginx.conf
 ```
@@ -226,7 +226,7 @@ user webgen;
 
 **3. Create a Separate Server Block File**
 
-Type the following command to create a new server block file that'll configure Nginx to host index.html:
+Type the following command to create a new server block file that'll configure Nginx to host index.html[^3]:
 
 ```
 sudo nvim /etc/nginx/sites-available/webgen
@@ -286,6 +286,9 @@ server {
 [^1]: A. I. Nagori and H. Gerganov, "Creating a Non-login User on Linux," Baeldung. https://www.baeldung.com/linux/create-non-login-user. [Accessed: 19-Nov-2024].
 
 [^2]: `man useradd` - Use `-r` options for creating a system user.
+
+[^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 22-Nov-2024].
+
 
 
 
