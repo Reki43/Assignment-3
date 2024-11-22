@@ -98,7 +98,7 @@ else
 fi
 ```
 
-3. Create `index.html` File in the /webgen/HTML directory
+**3. Create `index.html` File in the /webgen/HTML directory**
 ```
 sudo nvim /var/lib/webgen/HTML/index.html
 ```
