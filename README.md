@@ -18,28 +18,32 @@ Before we start, we need to create a system user with a home directory and a log
 
 **1. Creating the system user**
 
-Type the following command to create a system user with a home directory:
+Type the following command to create a system user with a specified custom home directory:
 
 ```
-sudo useradd -r -m -d /var/lib/webgen -s /usr/sbin/nologin webgen
+sudo useradd -r -d /var/lib/webgen -s /usr/sbin/nologin webgen
 ```
 
 **-r:** Creates a system account.[^2]
-
-**-m:** Creates the home directory if it doesn't exist.
 
 **-d:** Specifies the home directory.
 
 **-s /usr/sbin/nologin webgen:** Specifies a non-login shell to prevent interactive logins.[^1]
 
-**2. Create the Necessary Directory Structure and Files**
+**2. Copy and Paste the following command to create the home directory, as it doesn't exist:**
 
-Type the following to create the sub-directories `bin` and `HTML` for webgen directory:
+```
+sudo mkdir -p /var/lib/webgen
+```
+
+**3. Create the Necessary Directory Structure and Files**
+
+Type the following to create the sub-directories `bin` and `HTML` for the `webgen` directory:
 ```
 sudo mkdir -p /var/lib/webgen/bin /var/lib/webgen/HTML
 ```
 
-**3. Create generate_index File**
+**4. Create generate_index File**
 
 Type the following to create and enter the generate_index file:
 
@@ -98,12 +102,12 @@ else
 fi
 ```
 
-**3. Create `index.html` File in the /webgen/HTML directory**
+**5. Create `index.html` File in the /webgen/HTML directory**
 ```
 sudo nvim /var/lib/webgen/HTML/index.html
 ```
 
-**4. Set Ownership**
+**6. Set Ownership**
 
 Type the following commmand to set ownership of the home directory and its contents to webgen:
 
