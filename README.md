@@ -12,22 +12,62 @@ something
 
 # Setup Instructions for New Server
 
-## Task 1
+## Task 1 - Create the System User and Directory Structure
 
 Before we start, we need to create a system user with a home directory and a login shell for a non-login user.
 
-1. Type the following command to create a system user with a home directory
+1. Creating the system user
+
+Type the following command to create a system user with a home directory
 
 ```
-sudo useradd -r -m -d /var/lib/webgen -s /bin/bash webgen
+sudo useradd -r -m -d /var/lib/webgen -s /usr/sbin/nologin webgen
 ```
 
--r: Creates a system account.
+**-r:** Creates a system account.[^2]
 
--m: Creates the home directory if it doesn't exist.
+**-m:** Creates the home directory if it doesn't exist.
 
--d: Specifies the home directory.
+**-d:** Specifies the home directory.
 
--s: Specifies the login shell, which we'll use /bin/bash.
+**-s /usr/sbin/nologin webgen:** Specifies a non-login shell to prevent interactive logins.[^1]
+
+
+
+
+
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# References
+
+[^1]: A. I. Nagori and H. Gerganov, "Creating a Non-login User on Linux," Baeldung. https://www.baeldung.com/linux/create-non-login-user. [Accessed: 19-Nov-2024].
+
+
+[^2]: `man useradd` - Use `-r` options for creating a system user.
 
 
