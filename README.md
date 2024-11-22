@@ -212,6 +212,50 @@ sudo journalctl -u generate-index.service
 
 ## Task 3 - Modifying nginx.conf and Creating Server Blocks
 
+**1. Modify the Main `nginx.conf` File**
+
+Type the following command to access and edit the `nginx.conf` file:
+```
+sudo nvim /etc/nginx/nginx.conf
+```
+
+**2. Locate `user` in nginx.conf and change it to `webgen`**
+```
+user webgen;
+```
+
+**3. Create a Separate Server Block File**
+
+Type the following command to create a new server block file that'll configure Nginx to host index.html:
+
+```
+sudo nvim /etc/nginx/sites-available/webgen
+```
+
+>[!NOTE]
+>
+
+
+Copy and paste the following server block into your webgen file:
+
+```
+server {
+   listen 80;
+   listen [::]:80;
+
+   server_name localhost.webgen;
+
+   root /var/lib/webgen/HTML;
+   index index.html;
+
+        location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+
+
 
 
 
