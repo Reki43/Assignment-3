@@ -115,7 +115,66 @@ sudo chown -R webgen:webgen /var/lib/webgen
 >Running this command changes the ownership to the webgen user, ensuring that only the webgen user has the necessary permissions to access and manage its home directory and all files within it.
 
 
+## Task 2 - Creating the generate-index.service and generate-index.timer scripts
 
+
+**1. Create the generate-index.service File**
+
+Type the following to create and enter a service file named `generate-index.service` in your system directory:
+
+```
+sudo nvim /etc/systemd/system/generate-index.service
+```
+
+Type the following into the `generate-index.service` file:
+
+```ini
+[Unit]
+Description=Generate Index Service
+
+
+[Service]
+User=webgen
+Group=webgen
+ExecStart=/var/lib/webgen/bin/generate_index
+```
+
+**2. Create the generate-index.timer File**
+
+Type the following to create and enter a service file named `generate-index.timer` in your system directory:
+
+```
+sudo nvim /etc/systemd/system/generate-index.timer
+```
+
+Type the following into the `generate-index.service` file:
+
+```ini
+[Unit]
+Description=Timer for Generate Index Service
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+Unit=generate-index.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+**3. Enable and Start the Timer**
+
+Type the following command to set the timer to start automatically at boot:
+
+```
+sudo systemctl enable generate-index.timer
+```
+
+Type the following command to iniate the timer immediately:
+
+```
+sudo systemctl start generate-index.timer
+```
 
 
 
