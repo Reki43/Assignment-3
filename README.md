@@ -176,6 +176,42 @@ Type the following command to iniate the timer immediately:
 sudo systemctl start generate-index.timer
 ```
 
+>[!IMPORTANT]
+>Check timer status is **active** by typing `sudo systemctl status generate-index.timer`
+
+**4. Manual Trigger Service for Testing**
+>[!NOTE]
+>Do not enable service. We just want to start it to check if the `generate-index.service` will work when active.
+
+Type the following command to start the service:
+```
+sudo systemctl start generate-index.service
+```
+
+
+>[!NOTE]
+>When you start `generate-index.service` , index.html's structure will be successfully written if the service output message shows that it has started, executed, and deactivated successfully.
+
+5. Check if Status is Active and if the Service Executed
+
+Type the following command to check the status of the service:
+
+```
+sudo systemctl status generate-index.service
+```
+
+Type the folowing to view the logs of the service:
+
+```
+sudo journalctl -u generate-index.service
+```
+
+>[!NOTE]
+>When you check the service status, Active will say **inactive (dead)** because the `generate-index.service` successfully completed its task and then stopped, as it only executes the `generate_index` script once. However, when you check the logs, you should see detailed entries confirming the script's successful execution and any relevant output generated during its run.
+
+
+## Task 3 - Modifying nginx.conf and Creating Server Blocks
+
 
 
 
