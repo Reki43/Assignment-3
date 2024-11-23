@@ -329,18 +329,18 @@ sudo systemctl start nginx
 
 **1. Install UFW**
 
-Copy and paste the following code to install UFW:
+Copy and paste the following code to install UFW[^5]:
 
 ```
 sudo pacman -S ufw
 ```
 
 >[!CAUTION]
->It is very important that after downloading UFW, you **do not enable UFW** right away. You will be locked out of your SSH droplet. Follow the next steps carefully to succesfully implement UFW. 
+>It is very important that after downloading UFW, you **do not enable UFW** right away. You will be locked out of your SSH droplet. Follow the next steps carefully to succesfully implement UFW[^4]. 
 
 **2. Allow SSH and HTTP from anywhere**
 
-To allow SSH connections from anywhere copy and paste the following command:
+To allow SSH connections from anywhere copy and paste the following command[^5]:
 
 ```
 sudo ufw allow ssh
@@ -377,7 +377,7 @@ sudo ufw limit ssh
 ```
 
 >[!NOTE]
->Setting the limit on SSH will block any IP address after 6 connection attempts within 30 seconds.
+>Setting the limit on SSH will block any IP address after 6 connection attempts within 30 seconds[^5].
 
 >[!IMPORTANT]
 >After entering the commands, make sure it said `Rules updated` and `Rules updated (v6)` for steps 2 and 3.
@@ -385,7 +385,7 @@ sudo ufw limit ssh
 
 **4. Enable UFW**
 
-Copy and paste the following command to enable UFW
+Copy and paste the following command to enable UFW[^5]:
 
 ```
 sudo ufw enable
@@ -393,7 +393,7 @@ sudo ufw enable
 
 **6.Check UFW status**
 
-Copy and paste the following command to check if UFW is active and the correct ports allowed are listed:
+Copy and paste the following command to check if UFW is active and the correct ports allowed are listed[^5]:
 
 ```
 sudo ufw status 
