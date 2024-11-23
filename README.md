@@ -7,7 +7,13 @@ This assignment will teach you how to set up a Bash script to generate a static 
 
 ## Table of Contents
 
-something
+1. [Setup Instructions for New Server](#setup-instructions-for-new-server)
+    1. [Create the System User and Directory Structure](#task-1---create-the-system-user-and-directory-structure)
+    2. [Create the generate-index.service and generate-index.timer scripts](#task-2---create-the-generate-indexservice-and-generate-indextimer-scripts)
+    3. [Modify nginx.conf and Create Server Blocks](#task-3---modify-nginxconf-and-create-server-blocks)
+    4. [Configure UFW for SSH and HTTP](#task-4---configure-ufw-for-ssh-and-http)
+    5. [Verify Your System Information Page Works](#task-5---verify-your-system-information-page-works)
+2. [References](#references)
 
 
 # Setup Instructions for New Server
@@ -122,7 +128,7 @@ sudo chown -R webgen:webgen /var/lib/webgen
 >Running this command changes the ownership to the webgen user, ensuring that only the webgen user has the necessary permissions to access and manage its home directory and all files within it.
 
 
-## Task 2 - Creating the generate-index.service and generate-index.timer scripts
+## Task 2 - Create the generate-index.service and generate-index.timer scripts
 
 
 **1. Create the generate-index.service File**
@@ -217,7 +223,7 @@ sudo journalctl -u generate-index.service
 >When you check the service status, Active will say **inactive (dead)** because the `generate-index.service` successfully completed its task and then stopped, as it only executes the `generate_index` script once. However, when you check the logs, you should see detailed entries confirming the script's successful execution and any relevant output generated during its run.
 
 
-## Task 3 - Modifying nginx.conf and Creating Server Blocks
+## Task 3 - Modify nginx.conf and Create Server Blocks
 
 **1. Install nginx**
 ```
@@ -325,7 +331,7 @@ sudo systemctl start nginx
 > Type `sudo systemctl status nginx` to check if Nginx is **active** and **running**
 
 
-## Task 4 - Configuring UFW for SSH and HTTP
+## Task 4 - Configure UFW for SSH and HTTP
 
 **1. Install UFW**
 
@@ -426,10 +432,11 @@ Open a web browser and type `https://` followed by your `droplet ip` into the ad
 http://your-droplet-ip
 ```
 
-If all done correctly, your system information page should look like this:
+**If all done correctly, your system information page should look like this:**
 ![Screenshot of my system information page](/System%20Information%20Screenshot.png)
 
 
+**Congratulations! You have successfully learned how to set up a Bash script, automate tasks with systemd, configure an nginx web server, and secure your server using a firewall with UFW!**
 
 
 # References
