@@ -418,24 +418,16 @@ To                         Action      From
 You can find your droplet's IP address by logging into your DigitalOcean account and clicking on the **Droplets** section. From there, locate the droplet you've been working with and copy its IP address.
 
 
+**2. Visit the IP Address**
 
+Open a web browser and type `https://` followed by your `droplet ip` into the address bar
 
+```
+http://your-droplet-ip
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+If all done correctly, your system information page should look like this:
+![Screenshot of my system information page](/System%20Information%20Screenshot.png)
 
 
 
@@ -449,7 +441,8 @@ You can find your droplet's IP address by logging into your DigitalOcean account
 
 [^4]: "Week Twelve Notes," CIT2420 Notes, 2024. [Online]https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
 
-[^5]: "Uncomplicated Firewall," ArchWiki. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: Nov. 19, 2024].
+[^5]: "Uncomplicated Firewall - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: 19-Nov-2024].
+
 
 
 
