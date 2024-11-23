@@ -327,7 +327,41 @@ sudo systemctl start nginx
 
 ## Task 4 - Configuring UFW for SSH and HTTP
 
+**1. Install UFW**
 
+Copy and paste the following code to install UFW:
+
+```
+sudo pacman -S ufw
+```
+
+>[!CAUTION]
+>It is very important that after downloading UFW, you **do not enable UFW** right away. You will be locked out of your SSH droplet. Follow the next steps carefully to succesfully implement UFW. 
+
+**2. Allow SSH and HTTP from anywhere**
+
+To allow SSH connections from anywhere copy and paste the following command:
+
+```
+sudo ufw allow ssh
+```
+
+To allow HTTP traffic from anywhere copy and paste the following command:
+
+```
+sudo ufw allow http
+```
+
+**3. Enable SSH rate limiting**
+
+To limit the rate of SSH connections to protect against multiple unauthorized access attempts, copy and paste the following command:
+
+```
+sudo ufw limit ssh
+```
+
+>[!NOTE]
+>Setting the limit on SSH will block any IP address after 6 connection attempts within 30 seconds.
 
 
 
@@ -355,14 +389,15 @@ sudo systemctl start nginx
 
 
 # References
-[^1]: "Users and groups - ArchWiki." Arch Linux, 23 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Users_and_groups#Example_adding_a_system_user. [Accessed: 23-Nov-2024].
-
+[^1]: "Users and groups - ArchWiki." Arch Linux, 23 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Users_and_groups#Example_adding_a_system_user. [Accessed: 19-Nov-2024].
 
 [^2]: `man useradd` - Use `-r` options for creating a system user.
 
-[^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 22-Nov-2024].
+[^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 19-Nov-2024].
 
-[^4]: [1] "Week Twelve Notes," CIT2420 Notes, 2024. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 23, 2024].
+[^4]: "Week Twelve Notes," CIT2420 Notes, 2024. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
+
+[^5]: "Uncomplicated Firewall," ArchWiki. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: Nov. 19, 2024].
 
 
 
