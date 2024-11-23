@@ -216,19 +216,37 @@ sudo journalctl -u generate-index.service
 
 ## Task 3 - Modifying nginx.conf and Creating Server Blocks
 
-**1. Modify the Main `nginx.conf` File**
+**1. Install nginx**
+```
+sudo pacman -S nginx
+```
+
+**2. Modify the Main `nginx.conf` File**
 
 Type the following command to access and edit the `nginx.conf` file[^3]:
 ```
 sudo nvim /etc/nginx/nginx.conf
 ```
 
-**2. Locate `user` in nginx.conf and change it to `webgen`**
+**3. Locate `user` in nginx.conf and change it to `webgen`**
 ```
 user webgen;
 ```
 
-**3. Create a Separate Server Block File**
+**4. Create the `sites-available` and `sites-enabled` directory**
+
+Creates the `sites-available` directory:
+```
+sudo mkdir -p /etc/nginx/sites-available
+```
+
+Creates the `sites-enabled` directory:
+```
+sudo mkdir -p /etc/nginx/sites-enabled
+```
+
+
+**5. Create a Separate Server Block File into `sites-available`**
 
 Type the following command to create a new server block file that'll configure Nginx to host index.html[^3]:
 
@@ -237,8 +255,7 @@ sudo nvim /etc/nginx/sites-available/webgen
 ```
 
 >[!NOTE]
->
-
+>We created a separate server block file instead of modifying the main nginx.conf file because it helps manage configurations more easily. Through this approach, it allows you to split a large configuration into smaller, manageable files. As a result, you can enable or disable specific parts quickly without affecting the entire setup, keeping your configuration organized and easier to maintain.
 
 Copy and paste the following server block into your webgen file:
 
