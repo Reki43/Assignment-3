@@ -383,7 +383,7 @@ sudo ufw limit ssh
 ```
 
 >[!NOTE]
->Setting the limit on SSH will block any IP address after 6 connection attempts within 30 seconds[^5].
+>Setting the `limit` on SSH will block any IP address after 6 connection attempts within 30 seconds[^5].
 
 >[!IMPORTANT]
 >After entering the commands, make sure it said `Rules updated` and `Rules updated (v6)` for steps 2 and 3.
