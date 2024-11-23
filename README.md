@@ -353,7 +353,7 @@ sudo ufw allow http
 ```
 
 >[!IMPORTANT]
->If you're getting an iptables error after allowing, read the following steps below. If not, you can skip to step 3 on enabling rate limiting.
+>If you're getting an `iptables` error after allowing, read the following steps below. If not, you can skip to step 3 on enabling rate limiting.
 
 **Possible error when trying to allow:**
 ```
@@ -391,7 +391,31 @@ Copy and paste the following command to enable UFW
 sudo ufw enable
 ```
 
+**6.Check UFW status**
 
+Copy and paste the following command to check if UFW is active and the correct ports allowed are listed:
+
+```
+sudo ufw status 
+```
+
+If done correctly, you should see the following UFW status:
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere
+80                         ALLOW       Anywhere
+22 (v6)                    ALLOW       Anywhere (v6)
+80 (v6)                    ALLOW       Anywhere (v6)
+```
+
+# Task 5 - Verify Your System Information Page Works
+
+**1. Find Your Droplet’s IP Address**
+
+You can find your droplet's IP address by logging into your DigitalOcean account and clicking on the **Droplets** section. From there, locate the droplet you've been working with and copy its IP address.
 
 
 
@@ -421,12 +445,12 @@ sudo ufw enable
 
 [^2]: `man useradd` - Use `-r` options for creating a system user.
 
-[^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 19-Nov-2024].
+[^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Nginx. [Accessed: 19-Nov-2024].
 
-[^4]: "Week Twelve Notes," CIT2420 Notes, 2024. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
-
+[^4]: "Week Twelve Notes," CIT2420 Notes, 2024. [Online]https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
 
 [^5]: "Uncomplicated Firewall," ArchWiki. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: Nov. 19, 2024].
+
 
 
 
