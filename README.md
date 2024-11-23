@@ -352,6 +352,22 @@ To allow HTTP traffic from anywhere copy and paste the following command:
 sudo ufw allow http
 ```
 
+>[!IMPORTANT]
+>If you're getting an iptables error after allowing, read the following steps below. If not, you can skip to step 3 on enabling rate limiting.
+
+**Possible error when trying to allow:**
+```
+[Errno 2] iptables v1.8.10 (legacy): can't initialize iptables table 'filter': Table does not od?)
+Perhaps iptables or your kernel needs to be upgraded.
+```
+
+**Steps to fix iptables error:**
+1. `sudo pacman -Syu` -- Update your system
+2. `sudo pacman -S iptables` -- Update outdated iptables version
+3. `sudo systemctl restart iptables` -- Restart iptables
+
+
+
 **3. Enable SSH rate limiting**
 
 To limit the rate of SSH connections to protect against multiple unauthorized access attempts, copy and paste the following command:
@@ -362,6 +378,18 @@ sudo ufw limit ssh
 
 >[!NOTE]
 >Setting the limit on SSH will block any IP address after 6 connection attempts within 30 seconds.
+
+>[!IMPORTANT]
+>After entering the commands, make sure it said `Rules updated` and `Rules updated (v6)` for steps 2 and 3.
+
+
+**4. Enable UFW**
+
+Copy and paste the following command to enable UFW
+
+```
+sudo ufw enable
+```
 
 
 
@@ -396,6 +424,7 @@ sudo ufw limit ssh
 [^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 19-Nov-2024].
 
 [^4]: "Week Twelve Notes," CIT2420 Notes, 2024. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
+
 
 [^5]: "Uncomplicated Firewall," ArchWiki. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: Nov. 19, 2024].
 
