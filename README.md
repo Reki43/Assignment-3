@@ -18,19 +18,22 @@ Before we start, we need to create a system user with a home directory and a log
 
 **1. Creating the system user**
 
-Type the following command to create a system user with a specified custom home directory:
+Type the following command to create a system user with a specified custom home directory[^1]:
 
 ```
 sudo useradd -r -d /var/lib/webgen -s /usr/sbin/nologin webgen
 ```
 
-**-r:** Creates a system account.[^2]
+**-r:** Creates a system account.[^1][^2]
 
 **-d:** Specifies the home directory.
 
 **-s /usr/sbin/nologin webgen:** Specifies a non-login shell to prevent interactive logins.[^1]
 
-**2. Copy and Paste the following command to create the home directory, as it doesn't exist:**
+>[!NOTE]
+>The reason the `-d` option was used is to specify a custom home directory for the system user. Although system users don't require a home directory, in this case, it helps in organizing and managing files related to the user's tasks. 
+
+**2. Copy and Paste the following command to create the home directory, as it doesn't exist yet:**
 
 ```
 sudo mkdir -p /var/lib/webgen
@@ -228,19 +231,22 @@ Type the following command to access and edit the `nginx.conf` file[^3]:
 sudo nvim /etc/nginx/nginx.conf
 ```
 
-**3. Locate `user` in nginx.conf and change it to `webgen`**
+**3. Locate `user` in nginx.conf and change it to `webgen webgen`**
 ```
-user webgen;
+user webgen webgen;
 ```
+>[!NOTE]
+>The first user indicates the username and the second user indicates the usergroup. This allows nginx.conf the correct permissions for managing files and directories associated with the webgen user and group.
+
 
 **4. Create the `sites-available` and `sites-enabled` directory**
 
-Creates the `sites-available` directory:
+Creates the `sites-available` directory[^3]:
 ```
 sudo mkdir -p /etc/nginx/sites-available
 ```
 
-Creates the `sites-enabled` directory:
+Creates the `sites-enabled` directory[^3]:
 ```
 sudo mkdir -p /etc/nginx/sites-enabled
 ```
@@ -255,7 +261,7 @@ sudo nvim /etc/nginx/sites-available/webgen
 ```
 
 >[!NOTE]
->We created a separate server block file instead of modifying the main nginx.conf file because it helps manage configurations more easily. Through this approach, it allows you to split a large configuration into smaller, manageable files. As a result, you can enable or disable specific parts quickly without affecting the entire setup, keeping your configuration organized and easier to maintain.
+>We created a separate server block file instead of modifying the main nginx.conf file because it helps manage configurations more easily[^3]. Through this approach, it allows you to split a large configuration into smaller, manageable files.Therefore, you can enable or disable specific parts quickly without affecting the entire setup, keeping your configuration organized and easier to maintain.
 
 Copy and paste the following server block into your webgen file:
 
@@ -275,6 +281,51 @@ server {
 }
 ```
 
+>[!NOTE]
+>This server block is set to listen for HTTP requests on port 80, which is the default port for http traffic[^4]. For the server name, we named it localhost.webgen. Make sure the `server_name` is always unique. The root directory `/var/lib/webgen/HTML` specifies where Nginx will look for files to host, and the default file `index.html` ensures that users can access the website's main content correctly.
+
+
+**6.Enable the Server Block**
+
+Type the following command to symlink and enable the server block[^3]:
+
+```
+sudo ln -s /etc/nginx/sites-available/webgen /etc/nginx/sites-enabled/
+```
+
+**7. Add the `sites-enabled` Directory in nginx.conf file**
+
+```
+http {
+    ...
+    include /etc/nginx/sites-enabled/*;
+}
+```
+
+>[!NOTE]
+>Type `sudo nginx -t` to verify if `nginx.conf` has any errors
+
+**8. Restart Nginx**
+
+Copy and paste the following command to restart Nginx:
+
+```
+sudo systemctl restart nginx
+```
+
+**9. Start Nginx**
+
+Copy and paste the following command to start Nginx:
+
+```
+sudo systemctl start nginx
+```
+
+>[!IMPORTANT]
+> Type `sudo systemctl status nginx` to check if Nginx is **active** and **running**
+
+
+## Task 4 - Configuring UFW for SSH and HTTP
 
 
 
@@ -304,11 +355,15 @@ server {
 
 
 # References
-[^1]: A. I. Nagori and H. Gerganov, "Creating a Non-login User on Linux," Baeldung. https://www.baeldung.com/linux/create-non-login-user. [Accessed: 19-Nov-2024].
+[^1]: "Users and groups - ArchWiki." Arch Linux, 23 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Users_and_groups#Example_adding_a_system_user. [Accessed: 23-Nov-2024].
+
 
 [^2]: `man useradd` - Use `-r` options for creating a system user.
 
 [^3]: "nginx - ArchWiki." Arch Linux, 7 Nov. 2024. [Online] https://wiki.archlinux.org/title/Nginx. [Accessed: 22-Nov-2024].
+
+[^4]: [1] "Week Twelve Notes," CIT2420 Notes, 2024. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 23, 2024].
+
 
 
 
