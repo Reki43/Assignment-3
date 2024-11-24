@@ -255,7 +255,7 @@ server {
 ```
 
 >[!NOTE]
->Starting with `listen 80;` `and listen [::]:80;` , this server block is set to listen for both ipv4 and ipv6 HTTP requests on port 80, which is the default port for http traffic[^4]. For the server name, we named it localhost.webgen. **Make sure the `server_name` is always unique.** The root directory `/var/lib/webgen/HTML` specifies where Nginx will look for files to host, and the default file `index.html` ensures that users can access the website's main content correctly. Finally, the `location /` block handles requests to your website's main root page, and the `try_files $uri $uri/ =404;` directive checks for the requested file or directory, hosting them if found, and returns a 404 error if not.
+>Starting with `listen 80;` `and listen [::]:80;` , this server block is set to listen for both ipv4 and ipv6 HTTP requests on port 80, which is the default port for http traffic[^4]. For the server name, we named it localhost.webgen. **Make sure the `server_name` is always unique.** The root directory `/var/lib/webgen/HTML` specifies where Nginx will look for files to host, and the default file `index.html` ensures that users can access the website's main content correctly. Finally, the `location /` block handles requests to your website's main root page, and the `try_files $uri $uri/ =404;` directive checks for the requested file or directory, hosting them if found, and returns a 404 error if not[^4].
 
 
 **6.Enable the Server Block**
