@@ -393,7 +393,7 @@ You can find your droplet's IP address by logging into your DigitalOcean account
 
 **2. Visit the IP Address**
 
-Open a web browser and type `https://` followed by your `droplet ip` into the address bar
+Open a web browser and type `http://` followed by your `droplet ip` into the address bar
 
 ```
 http://your-droplet-ip
