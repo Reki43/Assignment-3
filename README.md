@@ -52,71 +52,38 @@ Type the following to create the sub-directories `bin` and `HTML` for the `webge
 sudo mkdir -p /var/lib/webgen/bin /var/lib/webgen/HTML
 ```
 
-**4. Create generate_index File**
+**4. Git Clone generate_index File**
 
-Type the following to create and enter the generate_index file:
+To clone a directory that includes the `generate_index` file script from this **sourcehut** repository, copy and paste the following command into your **home directory**:
 
 ```
-sudo nvim /var/lib/webgen/bin/generate_index
+git clone https://git.sr.ht/~nathan_climbs/2420-as2-start
 ```
 
-Copy and paste the following script. When executed, this will generate a HTML structure into your `index.html` file.
+**5. Move generate_index file to the webgen/bin directory**
+
+Copy and paste the following commany to move the `generate_index` file into `/var/lib/webgen/bin` directory:
 ```
-#!/bin/bash
-
-set -euo pipefail
-
-# this is the generate_index script
-# you shouldn't have to edit this script
-
-# Variables
-KERNEL_RELEASE=$(uname -r)
-OS_NAME=$(grep '^PRETTY_NAME' /etc/os-release | cut -d '=' -f2 | tr -d '"')
-DATE=$(date +"%d/%m/%Y")
-PACKAGE_COUNT=$(pacman -Q | wc -l)
-OUTPUT_DIR="/var/lib/webgen/HTML"
-OUTPUT_FILE="$OUTPUT_DIR/index.html"
-
-# Ensure the target directory exists
-if [[ ! -d "$OUTPUT_DIR" ]]; then
-    echo "Error: Failed to create or access directory $OUTPUT_DIR." >&2
-    exit 1
-fi
-
-# Create the index.html file
-cat <<EOF > "$OUTPUT_FILE"
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Information</title>
-</head>
-<body>
-    <h1>System Information</h1>
-    <p><strong>Kernel Release:</strong> $KERNEL_RELEASE</p>
-    <p><strong>Operating System:</strong> $OS_NAME</p>
-    <p><strong>Date:</strong> $DATE</p>
-    <p><strong>Number of Installed Packages:</strong> $PACKAGE_COUNT</p>
-</body>
-</html>
-EOF
-
-# Check if the file was created successfully
-if [ $? -eq 0 ]; then
-    echo "Success: File created at $OUTPUT_FILE."
-else
-    echo "Error: Failed to create the file at $OUTPUT_FILE." >&2
-    exit 1
-fi
+sudo mv 2420-as2-start/generate_index /var/lib/webgen/bin/
 ```
 
-**5. Create `index.html` File in the /webgen/HTML directory**
+**6. Give generate_index executable permission**
+
+Copy and paste the following command to give `generate_index` executable permission:
+```
+sudo chmod +x /var/lib/webgen/bin/generate_index
+```
+
+>[!NOTE]
+>When executed, the file will generate a HTML structure into your `index.html` file.
+
+
+**7. Create `index.html` File in the /webgen/HTML directory**
 ```
 sudo nvim /var/lib/webgen/HTML/index.html
 ```
 
-**6. Set Ownership**
+**8. Set Ownership**
 
 Type the following commmand to set ownership of the home directory and its contents to webgen:
 
@@ -128,7 +95,7 @@ sudo chown -R webgen:webgen /var/lib/webgen
 >Running this command changes the ownership to the webgen user, ensuring that only the webgen user has the necessary permissions to access and manage its home directory and all files within it.
 
 
-## Task 2 - Create the generate-index.service and generate-index.timer scripts
+## Task 2 - Create the generate-index.service and generate-index.timer Scripts
 
 
 **1. Create the generate-index.service File**
