@@ -343,6 +343,7 @@ Perhaps iptables or your kernel needs to be upgraded.
 1. `sudo pacman -Syu` -- Update your system
 2. `sudo pacman -S iptables` -- Update outdated iptables version
 3. `sudo systemctl restart iptables` -- Restart iptables
+4. `sudo reboot` - Reboot droplet
 
 
 
