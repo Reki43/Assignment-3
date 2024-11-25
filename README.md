@@ -111,6 +111,8 @@ Type the following into the `generate-index.service` file:
 ```ini
 [Unit]
 Description=Generate Index Service
+Wants=network-online.target
+After=network-online.target
 
 
 [Service]
@@ -118,6 +120,9 @@ User=webgen
 Group=webgen
 ExecStart=/var/lib/webgen/bin/generate_index
 ```
+
+>[!NOTE]
+>The `network-online.target` ensures the network is fully operational. The `Wants` directive suggests that a service prefers to wait for the network to be ready but doesn't strictly require it. The `After` directive ensures the service starts only after the network is confirmed to be online, ensuring proper functionality. This helps prevent network-dependent services from failing due to network-related issues[^6].
 
 **2. Create the generate-index.timer File**
 
@@ -416,6 +421,8 @@ http://your-droplet-ip
 [^4]: "Week Twelve Notes," CIT2420 Notes, 2024. [Online]https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-twelve.md. [Accessed: Nov. 19, 2024].
 
 [^5]: "Uncomplicated Firewall - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: 19-Nov-2024].
+
+[^6] "Systemd - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Systemd. [Accessed: 23-Nov-2024].
 
 
 
