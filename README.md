@@ -384,9 +384,9 @@ Status: active
 
 To                         Action      From
 --                         ------      ----
-22                         ALLOW       Anywhere
+22                         LIMIT       Anywhere
 80                         ALLOW       Anywhere
-22 (v6)                    ALLOW       Anywhere (v6)
+22 (v6)                    LIMIT       Anywhere (v6)
 80 (v6)                    ALLOW       Anywhere (v6)
 ```
 
