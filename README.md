@@ -230,7 +230,7 @@ sudo mkdir -p /etc/nginx/sites-enabled
 Type the following command to create a new server block file that'll configure Nginx to host index.html[^3]:
 
 ```
-sudo nvim /etc/nginx/sites-available/webgen
+sudo nvim /etc/nginx/sites-available/webgen.conf
 ```
 
 >[!NOTE]
@@ -263,7 +263,7 @@ server {
 Type the following command to symlink and enable the server block[^3]:
 
 ```
-sudo ln -s /etc/nginx/sites-available/webgen /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/webgen.conf /etc/nginx/sites-enabled/
 ```
 
 **7. Add the `sites-enabled` Directory in nginx.conf file**
