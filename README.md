@@ -422,7 +422,7 @@ http://your-droplet-ip
 
 [^5]: "Uncomplicated Firewall - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Uncomplicated_Firewall. [Accessed: 19-Nov-2024].
 
-[^6] "Systemd - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Systemd. [Accessed: 23-Nov-2024].
+[^6]: "Systemd - ArchWiki." Arch Linux, 1 Nov. 2024. [Online]. https://wiki.archlinux.org/title/Systemd. [Accessed: 23-Nov-2024].
 
 
 
