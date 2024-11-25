@@ -236,7 +236,7 @@ sudo nvim /etc/nginx/sites-available/webgen.conf
 >[!NOTE]
 >We created a separate server block file instead of modifying the main nginx.conf file because it helps manage configurations more easily[^3]. Through this approach, it allows you to split a large configuration into smaller, manageable files.Therefore, you can enable or disable specific parts quickly without affecting the entire setup, keeping your configuration organized and easier to maintain.
 
-Copy and paste the following server block into your webgen file:
+Copy and paste the following server block into your `webgen.conf` file:
 
 ```
 server {
