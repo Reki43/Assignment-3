@@ -364,7 +364,7 @@ Copy and paste the following command to enable UFW[^5]:
 sudo ufw enable
 ```
 
-**6.Check UFW status**
+**5.Check UFW status**
 
 Copy and paste the following command to check if UFW is active and the correct ports allowed are listed[^5]:
 
